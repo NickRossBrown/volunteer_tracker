@@ -27,16 +27,21 @@ class Project
   @id = result.first().fetch("id").to_i()
   end
 
-  def find
-    self
-  end
+  def self.find(id)
+   result = DB.exec("SELECT * FROM project WHERE id = #{id};")
+   title = result.first().fetch("title")
+   Project.new({:title => title, :id => id})
+ end
 
   def volunteers
     self
   end
 
-  def update
-    self
+  def update (new_title)
+    @id = id
+    @title = new_title
+
+    DB.exec("UPDATE project SET title = '#{new_title}' WHERE id = '#{@id}';")
   end
 
   def delete
