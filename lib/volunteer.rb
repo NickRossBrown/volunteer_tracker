@@ -18,11 +18,20 @@ class Volunteer
    end
 
    def self.all
-     self
+     all_volunteers =  DB.exec("SELECT * FROM volunteer;")
+     volunteers=[]
+     all_volunteers.each() do |person|
+       name = person.fetch("name")
+       id = person.fetch("id").to_i
+       project_id = person.fetch("project_id").to_i
+       volunteers.push(Volunteer.new({:name=> name, :id=> id, :project_id=>project_id}))
+     end
+     volunteers
    end
 
    def save
-     self
+     result = DB.exec("INSERT INTO volunteer (name, project_id) VALUES ('#{@name}','#{@project_id}') RETURNING id;")
+     @id = result.first().fetch("id").to_i()
    end
 
    def find
