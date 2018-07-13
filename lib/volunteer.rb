@@ -13,7 +13,7 @@ class Volunteer
    end
 
 
-     def ==
+     def ==(another_volunteer)
        self
      end
 
@@ -26,7 +26,9 @@ class Volunteer
      end
 
      def find
-       self
+      result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")
+      name = result.first().fetch("name")
+      Volunteer.new({:name => name, :id => id})
      end
 
      def project_id
