@@ -13,27 +13,39 @@ class Volunteer
    end
 
 
-     def ==(another_volunteer)
-       self
-     end
+   def ==(another_volunteer)
+     self.name().==(another_volunteer.name()).&(self.id().==(another_volunteer.id()))
+   end
 
-     def self.all
-       self
-     end
+   def self.all
+     self
+   end
 
-     def save
-       self
-     end
+   def save
+     self
+   end
 
-     def find
-      result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")
-      name = result.first().fetch("name")
-      Volunteer.new({:name => name, :id => id})
-     end
+   def find
+    result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")
+    name = result.first().fetch("name")
+    Volunteer.new({:name => name, :id => id})
+   end
 
-     def project_id
-       self
-     end
+  #  def project_id
+  #   #  binding.pry
+  #    result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")
+  #   #  title = result.first().fetch("title")
+  #   #  project_id = result.fetch("project_id")
+  #    binding.pry
+  #    Project.new({:title => title, :id => id})
+  #  end
+
+   def searh_project
+
+    result = DB.exec("SELECT * FROM project WHERE id = #{id};")
+    title = result.first().fetch("title")
+    Project.new({:title => title, :id => id})
+  end
 
 
 

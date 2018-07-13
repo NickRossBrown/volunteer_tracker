@@ -41,12 +41,11 @@ class Project
     @id = id
     @title = new_title
 
-    DB.exec("UPDATE project SET title = '#{new_title}' WHERE id = '#{@id}';")
+    DB.exec("UPDATE project SET title = '#{new_title}' WHERE id='#{@id}';")
   end
 
   def delete
-    # @id = id
-    DB.exec("DELETE FROM project WHERE id = '#{@id}';")
+    DB.exec("DELETE FROM project WHERE id='#{@id}';")
   end
 
 
