@@ -7,8 +7,8 @@ class Project
     @id = parameters.fetch(:id, nil)
   end
 
-  def ===
-    self
+  def ==(another_project)
+    self.title().==(another_project.title()).&(self.id().==(another_project.id()))
   end
 
   def self.all
