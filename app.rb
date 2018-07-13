@@ -11,3 +11,7 @@ DB = PG.connect({:dbname => "volunteer_tracker"})
 get ('/') do
   erb(:index)
 end
+
+get('/projects') do
+  erb(:projects)
+end

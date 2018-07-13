@@ -3,15 +3,36 @@ class Volunteer
   attr_accessor :name
   def initialize (args)
     args = defaults.merge(args)
-    @name = :name
-    @id = :id
-    @project_id = :project_id
+    @name = args[:name]
+    @id = args[:id]
+    @project_id = args[:project_id]
    end
 
    def defaults
-     {:name=>"NONE", :id=> 0, :project_id=>0}     
+     {:name=>"NONE", :id=> 0, :project_id=>0}
    end
 
+
+     def ==
+       self
+     end
+
+     def self.all
+       self
+     end
+
+     def save
+       self
+     end
+
+     def find
+       self
+     end
+
+     def project_id
+       self
+     end
+
+
+
 end
-Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
-expect(test_volunteer.name).to eq 'Jane'
