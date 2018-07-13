@@ -12,11 +12,19 @@ class Project
   end
 
   def self.all
-    self
+    all_projects = DB.exec("SELECT * FROM project;")
+    projects = []
+    all_projects.each() do |project|
+      title = project.fetch("title")
+      id = project.fetch("id").to_i()
+      projects.push(Project.new({:title => title, :id => id, }))
+    end
+    projects
   end
 
   def save
-    self
+  result = DB.exec("INSERT INTO project title VALUES '#{@title}' RETURNING id;")
+  @id = result.first().fetch("id").to_i()
   end
 
   def find
