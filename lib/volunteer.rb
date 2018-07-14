@@ -34,7 +34,7 @@ class Volunteer
      @id = result.first().fetch("id").to_i()
    end
 
-   def find
+   def find(id)
     result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")
     name = result.first().fetch("name")
     Volunteer.new({:name => name, :id => id})
@@ -49,11 +49,18 @@ class Volunteer
   #    Project.new({:title => title, :id => id})
   #  end
 
-   def searh_project
+   def search_project (project_id)
+    all_volunteers = DB.exec("SELECT * FROM volunteer WHERE project_id = #{project_id};")
+    volunteers=[]
 
-    result = DB.exec("SELECT * FROM project WHERE id = #{id};")
-    title = result.first().fetch("title")
-    Project.new({:title => title, :id => id})
+    all_volunteers.each() do |person|
+      name = person.fetch("name")
+      id = person.fetch("id").to_i
+      project_id = person.fetch("project_id").to_i
+      volunteers.push(Volunteer.new({:name=> name, :id=> id, :project_id=>project_id}))
+    end
+    volunteers
+    # binding.pry
   end
 
 
