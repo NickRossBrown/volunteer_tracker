@@ -18,7 +18,7 @@ class Volunteer
    end
 
    def self.all
-     all_volunteers =  DB.exec("SELECT * FROM volunteer;")
+     all_volunteers =  DB.exec("SELECT * FROM volunteers;")
      volunteers=[]
      all_volunteers.each() do |person|
        name = person.fetch("name")
@@ -30,12 +30,12 @@ class Volunteer
    end
 
    def save
-     result = DB.exec("INSERT INTO volunteer (name, project_id) VALUES ('#{@name}','#{@project_id}') RETURNING id;")
+     result = DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}','#{@project_id}') RETURNING id;")
      @id = result.first().fetch("id").to_i()
    end
 
    def find(id)
-    result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")
+    result = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")
     name = result.first().fetch("name")
     Volunteer.new({:name => name, :id => id})
    end
@@ -50,7 +50,7 @@ class Volunteer
   #  end
 
    def search_project (project_id)
-    all_volunteers = DB.exec("SELECT * FROM volunteer WHERE project_id = #{project_id};")
+    all_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id};")
     volunteers=[]
 
     all_volunteers.each() do |person|

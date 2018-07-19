@@ -1,0 +1,44 @@
+
+
+.bodyStyles{
+
+  background: radial-gradient(lightyellow, #dcc7cc);
+
+}
+
+.header {
+  margin-top: 150px;
+  margin-bottom: 50px;
+  margin-left: 150px;
+  padding: 15px 32px;
+  font-size: 40px;
+
+}
+
+.button {
+  background-color: #ade6d8;
+}
+
+#projectsPage {
+  background-color: #ade6d8;
+  margin: 0 auto;
+  padding: 15px 32px;
+  font-size: 40px;
+
+}
+
+#volunteersPage {
+  background-color: #bbe6ad ;
+  padding: 15px 32px;
+  font-size: 40px;
+
+  margin: 0 auto;
+}
+
+#homepage {
+  background-color: #d8ade6;
+  padding: 15px 32px;
+  font-size: 40px;
+  vertical-align: baseline;
+  margin-bottom: 400px;
+}
