@@ -42,3 +42,34 @@ get ('/projects/update') do
   @projects = Project.all
   erb(:projects)
 end
+
+get('/volunteers') do
+  @volunteers = Volunteer.all
+  erb(:volunteers)
+end
+
+post ('/volunteers') do
+  projectname = params.fetch("projectname")
+  addproject = Volunteer.new({:name=>projectname})
+  addproject.save
+  @volunteers = Volunteer.all
+  erb(:volunteers)
+end
+
+get ('/volunteers/delete') do
+  volunteer_id = params.fetch("volunteer_delete")
+  binding.pry
+  volunteer=Volunteer.find(volunteer_id)
+  volunteer.delete
+  @volunteers = Volunteer.all
+  erb(:volunteers)
+end
+
+get ('/volunteers/update') do
+  volunteer_id = params.fetch("volunteers_update")
+  new_volunteer_name = params.fetch("renamevolunteer")
+  volunteer=Volunteer.find(volunteer_id)
+  volunteer.update(new_volunteer_name )
+  @volunteers = Volunteer.all
+  erb(:volunteers)
+end

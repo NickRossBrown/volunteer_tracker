@@ -34,7 +34,7 @@ class Volunteer
      @id = result.first().fetch("id").to_i()
    end
 
-   def find(id)
+   def self.find(id)
     result = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")
     name = result.first().fetch("name")
     Volunteer.new({:name => name, :id => id})
@@ -60,9 +60,6 @@ class Volunteer
       volunteers.push(Volunteer.new({:name=> name, :id=> id, :project_id=>project_id}))
     end
     volunteers
-    # binding.pry
   end
-
-
 
 end

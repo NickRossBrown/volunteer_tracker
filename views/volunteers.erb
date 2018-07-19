@@ -1,0 +1,74 @@
+<div class="container">
+
+  <div class="table">
+    <h1>Volunteer Page</h1>
+    <br>
+    <br>
+    <%if @volunteers != []%>
+    <table class="table">
+      <tr>
+        <td class='title'>
+          <font> <strong> volunteers </strong></font>
+        </td>
+      </tr>
+      <% @volunteers.each do |volunteer| %>
+      <tr>
+        <td>
+          <font><%= volunteer.name %> </font>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <% else %>
+      <h2>no volunteer yet</h2>
+    <% end %>
+  </div>
+  <br>
+  <br>
+
+  <form class="container form-group button" action="/volunteers" method="post" name="volunteer">
+    <label id="volunteername" name="volunteername" type = "text">Enter volunteer</label>
+    <input type="text" name="projectname">
+    <button  type="submit" class="btn btn-info"name="button">Add A volunteer </button>
+  </form>
+  <br>
+  <br>
+
+  <form class="container form-group button" action="/volunteers/update" method="update" name="volunteer">
+    <select id="volunteer_update" name="volunteer_update">
+     <%if @volunteers != []%>
+      <% @volunteers.each do |volunteer| %>
+       <option value = "<%= volunteer.id %>" > <%= volunteer.name %> </option>
+       <% end %>
+       <% else %>
+       <option value="" disabled selected>no volunteer yet</option>
+       <% end %>
+     </select>
+
+     <label id="renamevolunteer" name="renamevolunteer" type = "text">Rename volunteer Title</label>
+     <input type="text" name="renamevolunteer">
+
+    <button type="submit" class="btn btn-info"name="button">Update A volunteer</button>
+  </form>
+  <br>
+  <br>
+
+  <form class="container form-group button" action="/volunteers/delete" method="delete" name="volunteer">
+    <select id="volunteer_delete" name="volunteer_delete">
+     <%if @volunteer != []%>
+      <% @volunteers.each do |volunteer| %>
+       <option value = "<%= volunteer.id %>" > <%= volunteer.name %> </option>
+       <% end %>
+       <% else %>
+       <option value="" disabled selected>no volunteer yet</option>
+       <% end %>
+     </select>
+    <button  type="submit" class="btn btn-info"name="button">Delete A volunteer</button>
+  </form>
+  <br>
+  <br>
+
+  <button class="container" id="homepage" type="button" name="button">
+    <a href="/">Return Home</a>
+  </button>
+</div>
