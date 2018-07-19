@@ -4,23 +4,35 @@
   </div>
 
   <div class="allProjects">
-    <h2><%= @projects_list.title  %> "test"   </h2>
 
   </div>
+
 
   <form class="container form-group button" action="/projects" method="post" name="projects">
     <button class="container"  type="submit" class="btn btn-info"name="button">Show All Projects</button>
   </form>
 
   <form class="container form-group button" action="/projects" method="post" name="projects">
+    <label id="projectname" name="projectname" type = "text">Enter project</label>
+  <input type="text" name="projectname">
     <button class="container"  type="submit" class="btn btn-info"name="button">Add A Project </button>
   </form>
 
   <form class="container form-group" action="/projects" method="update" name="projects">
+
     <button class="container"  type="submit" class="btn btn-info"name="button">Update A Project</button>
   </form>
 
   <form class="container form-group" action="/projects" method="delete" name="projects">
+    <select id="projects_drop" name="projects_drop">
+     <%if @projects != []%>
+      <% @projects.each do |project| %>
+       <option value = "<%= project.id %>" > <%= project.title %> </option>
+       <% end %>
+       <% else %>
+       <option value="" disabled selected>no projects yet</option>
+       <% end %>
+     </select>
     <button class="container"  type="submit" class="btn btn-info"name="button">Delete A Project</button>
   </form>
 

@@ -13,16 +13,25 @@ get ('/') do
 end
 
 get('/projects') do
-  @projects_list = Project.new({:title=>"no title", :id=>0})
+  @projects = Project.all
   erb(:projects)
 end
 
 
 post ('/projects') do
   example = Project.new({:title=>"no title", :id=>0})
-  binding.pry
-  @projects_list = Project.new({:title=>"no title", :id=>0})
-  # @projects = Project.all
+  projectname = params.fetch("projectname")
+  addproject = Project.new({:title=>projectname, :id=>0})
+  addproject.save
+  @projects = Project.all
+  erb(:projects)
+end
 
+post ('/projects') do
+  example = Project.new({:title=>"no title", :id=>0})
+  projectname = params.fetch("projectname")
+  addproject = Project.new({:title=>projectname, :id=>0})
+  addproject.save
+  @projects = Project.all
   erb(:projects)
 end
