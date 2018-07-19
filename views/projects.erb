@@ -1,24 +1,40 @@
 <div class="container">
-  <div class="header container">
+
+  <div class="table">
     <h1>Projects Page</h1>
+    <br>
+    <br>
+    <%if @projects != []%>
+    <table class="table">
+      <tr>
+        <td class='title'>
+          <font> <strong> Projects </strong></font>
+        </td>
+      </tr>
+      <% @projects.each do |project| %>
+      <tr>
+        <td>
+          <font><%= project.title %> </font>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <% else %>
+      <h2>no projects yet</h2>
+    <% end %>
   </div>
-
-  <div class="allProjects">
-
-  </div>
-
-
-  <form class="container form-group button" action="/projects" method="post" name="projects">
-    <button class="container"  type="submit" class="btn btn-info"name="button">Show All Projects</button>
-  </form>
+  <br>
+  <br>
 
   <form class="container form-group button" action="/projects" method="post" name="projects">
     <label id="projectname" name="projectname" type = "text">Enter project</label>
     <input type="text" name="projectname">
-    <button class="container"  type="submit" class="btn btn-info"name="button">Add A Project </button>
+    <button  type="submit" class="btn btn-info"name="button">Add A Project </button>
   </form>
+  <br>
+  <br>
 
-  <form class="container form-group" action="/projects/update" method="update" name="projects">
+  <form class="container form-group button" action="/projects/update" method="update" name="projects">
     <select id="projects_update" name="projects_update">
      <%if @projects != []%>
       <% @projects.each do |project| %>
@@ -32,10 +48,12 @@
      <label id="renameproject" name="renameproject" type = "text">Rename Project Title</label>
      <input type="text" name="renameproject">
 
-    <button class="container"  type="submit" class="btn btn-info"name="button">Update A Project</button>
+    <button type="submit" class="btn btn-info"name="button">Update A Project</button>
   </form>
+  <br>
+  <br>
 
-  <form class="container form-group" action="/projects/delete" method="delete" name="projects">
+  <form class="container form-group button" action="/projects/delete" method="delete" name="projects">
     <select id="project_delete" name="project_delete">
      <%if @projects != []%>
       <% @projects.each do |project| %>
@@ -45,8 +63,10 @@
        <option value="" disabled selected>no projects yet</option>
        <% end %>
      </select>
-    <button class="container"  type="submit" class="btn btn-info"name="button">Delete A Project</button>
+    <button  type="submit" class="btn btn-info"name="button">Delete A Project</button>
   </form>
+  <br>
+  <br>
 
   <button class="container" id="homepage" type="button" name="button">
     <a href="/">Return Home</a>

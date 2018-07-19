@@ -5,6 +5,10 @@
   background: radial-gradient(lightyellow, #dcc7cc);
 
 }
+.container {
+  text-align: center;
+  font-size: 20px;
+}
 
 .header {
   margin-top: 150px;
@@ -13,6 +17,20 @@
   padding: 15px 32px;
   font-size: 40px;
 
+}
+.table {
+  border-width: 5px;
+  width: 100%;
+  background-color: #bbe6ad;
+  text-align: center;
+
+}
+.title {
+  background-color: pink;
+  align: center;
+  border: 5px;
+  column-span: all;
+  text-align: center;
 }
 
 .button {
