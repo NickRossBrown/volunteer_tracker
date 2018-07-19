@@ -14,17 +14,29 @@
 
   <form class="container form-group button" action="/projects" method="post" name="projects">
     <label id="projectname" name="projectname" type = "text">Enter project</label>
-  <input type="text" name="projectname">
+    <input type="text" name="projectname">
     <button class="container"  type="submit" class="btn btn-info"name="button">Add A Project </button>
   </form>
 
-  <form class="container form-group" action="/projects" method="update" name="projects">
+  <form class="container form-group" action="/projects/update" method="update" name="projects">
+    <select id="projects_update" name="projects_update">
+     <%if @projects != []%>
+      <% @projects.each do |project| %>
+       <option value = "<%= project.id %>" > <%= project.title %> </option>
+       <% end %>
+       <% else %>
+       <option value="" disabled selected>no projects yet</option>
+       <% end %>
+     </select>
+
+     <label id="renameproject" name="renameproject" type = "text">Rename Project Title</label>
+     <input type="text" name="renameproject">
 
     <button class="container"  type="submit" class="btn btn-info"name="button">Update A Project</button>
   </form>
 
   <form class="container form-group" action="/projects/delete" method="delete" name="projects">
-    <select id="projects_drop" name="projects_drop">
+    <select id="project_delete" name="project_delete">
      <%if @projects != []%>
       <% @projects.each do |project| %>
        <option value = "<%= project.id %>" > <%= project.title %> </option>

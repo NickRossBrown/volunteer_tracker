@@ -14,6 +14,7 @@ end
 
 get('/projects') do
   @projects = Project.all
+  binding.pry
   erb(:projects)
 end
 
@@ -28,9 +29,21 @@ post ('/projects') do
 end
 
 get ('/projects/delete') do
-  project_id = params.fetch("projects_drop")
+
+  project_id = params.fetch("project_delete")
   project=Project.find(project_id)
   project.delete
+  @projects = Project.all
+  erb(:projects)
+end
+get ('/projects/update') do
+
+
+  project_id = params.fetch("projects_update")
+  new_project_name = params.fetch("renameproject")
+  project=Project.find(project_id)
+
+  project.update(new_project_name )
   @projects = Project.all
   erb(:projects)
 end
