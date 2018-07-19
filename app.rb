@@ -27,11 +27,10 @@ post ('/projects') do
   erb(:projects)
 end
 
-post ('/projects') do
-  example = Project.new({:title=>"no title", :id=>0})
-  projectname = params.fetch("projectname")
-  addproject = Project.new({:title=>projectname, :id=>0})
-  addproject.save
+get ('/projects/delete') do
+  project_id = params.fetch("projects_drop")
+  project=Project.find(project_id)
+  project.delete
   @projects = Project.all
   erb(:projects)
 end

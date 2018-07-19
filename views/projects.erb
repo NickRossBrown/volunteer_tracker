@@ -23,7 +23,7 @@
     <button class="container"  type="submit" class="btn btn-info"name="button">Update A Project</button>
   </form>
 
-  <form class="container form-group" action="/projects" method="delete" name="projects">
+  <form class="container form-group" action="/projects/delete" method="delete" name="projects">
     <select id="projects_drop" name="projects_drop">
      <%if @projects != []%>
       <% @projects.each do |project| %>
