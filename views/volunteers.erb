@@ -12,16 +12,22 @@
         </td>
       </tr>
       <% @volunteers.each do |volunteer| %>
+
       <tr>
         <td>
-          <font><%= volunteer.name %> </font>
+          <font><%= volunteer.name %> --- <%= volunteer.project_id%>  </font>
+          <% end %>
+          <% else %>
+           <h2>no volunteers yet</h2>
+          <% end %>
+        </td>
+        <td>PROJECT ID
         </td>
       </tr>
-      <% end %>
+
     </table>
-    <% else %>
-      <h2>no volunteer yet</h2>
-    <% end %>
+
+
   </div>
   <br>
   <br>
@@ -65,6 +71,38 @@
      </select>
     <button  type="submit" class="btn btn-info"name="button">Delete A volunteer</button>
   </form>
+  <br>
+  <br>
+
+  <form class="container form-group button" action="/volunteers/projectassign" method="get" name="volunteer_assign">
+    <h2>assign volunteer</h2>
+
+    <select id="volunteer_assign" name="volunteer_assign">
+     <%if @volunteer != []%>
+      <% @volunteers.each do |volunteer| %>
+       <option value = "<%= volunteer.id %>" > <%= volunteer.name %> </option>
+       <% end %>
+       <% else %>
+       <option value="" disabled selected>no volunteer yet</option>
+       <% end %>
+     </select>
+
+     <h2>to the project</h2>
+
+     <select id="project_assign" name="project_assign">
+      <%if @projects != []%>
+       <% @projects.each do |project| %>
+        <option value = "<%= project.id %>" > <%= project.title %> </option>
+        <% end %>
+        <% else %>
+        <option value="" disabled selected>no projects yet</option>
+        <% end %>
+      </select>
+
+
+    <button  type="submit" class="btn btn-info"name="button">Add volunteer to Project</button>
+  </form>
+
   <br>
   <br>
 

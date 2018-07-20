@@ -49,6 +49,12 @@ class Volunteer
      DB.exec("UPDATE volunteers SET name = '#{new_name}' WHERE id='#{@id}';")
    end
 
+   def update_project_id (assign_project_id)
+     @id = id
+     @project_id = assign_project_id.to_i
+     DB.exec("UPDATE volunteers SET project_id = '#{@project_id }' WHERE id='#{@id}';")
+   end
+
   #  def project_id
   #   #  binding.pry
   #    result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")

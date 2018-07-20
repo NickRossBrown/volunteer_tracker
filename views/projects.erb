@@ -15,6 +15,11 @@
       <tr>
         <td>
           <font><%= project.title %> </font>
+          <%@volunteers.each do |volunteer| %>
+            <%if volunteer.project_id == project.id %>
+            <%= volunteer.name %>
+            <% end %>
+          <% end %>
         </td>
       </tr>
       <% end %>

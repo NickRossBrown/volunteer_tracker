@@ -14,6 +14,7 @@ end
 
 get('/projects') do
   @projects = Project.all
+  @volunteers = Volunteer.all
   erb(:projects)
 end
 
@@ -45,6 +46,7 @@ end
 
 get('/volunteers') do
   @volunteers = Volunteer.all
+  @projects = Project.all
   erb(:volunteers)
 end
 
@@ -52,6 +54,7 @@ post ('/volunteers') do
   projectname = params.fetch("projectname")
   addproject = Volunteer.new({:name=>projectname})
   addproject.save
+  @projects = Project.all
   @volunteers = Volunteer.all
   erb(:volunteers)
 end
@@ -60,6 +63,7 @@ get ('/volunteers/delete') do
   volunteer_id = params.fetch("volunteer_delete")
   volunteer=Volunteer.find(volunteer_id)
   volunteer.delete
+  @projects = Project.all
   @volunteers = Volunteer.all
   erb(:volunteers)
 end
@@ -70,5 +74,16 @@ get ('/volunteers/update') do
   volunteer=Volunteer.find(volunteer_id)
   volunteer.update(new_volunteer_name )
   @volunteers = Volunteer.all
+  @projects = Project.all
+  erb(:volunteers)
+end
+
+get ('/volunteers/projectassign') do
+  @volunteers = Volunteer.all
+  @projects = Project.all
+  volunteer_id = params.fetch("volunteer_assign")
+  project_id = params.fetch("project_assign")
+  volunteer=Volunteer.find(volunteer_id)
+  volunteer.update_project_id(project_id)
   erb(:volunteers)
 end
