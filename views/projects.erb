@@ -7,20 +7,18 @@
     <%if @projects != []%>
     <table class="table">
       <tr>
-        <td class='title'>
-          <font> <strong> Projects </strong></font>
-        </td>
+        <td class='projects'><strong> Projects </strong></td>
+        <td class="volunteers"><strong> Volunteers </strong></td>
       </tr>
       <% @projects.each do |project| %>
       <tr>
-        <td>
-          <font><%= project.title %> </font>
+        <td class='projects'><%= project.title %></td>
           <%@volunteers.each do |volunteer| %>
             <%if volunteer.project_id == project.id %>
-            <%= volunteer.name %>
+            <td class="volunteers"><%= volunteer.name %></td>
             <% end %>
           <% end %>
-        </td>
+
       </tr>
       <% end %>
     </table>

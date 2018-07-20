@@ -19,18 +19,28 @@
 
 }
 .table {
+  border: 5px;
   border-width: 5px;
   width: 100%;
   background-color: #bbe6ad;
   text-align: center;
 
 }
-.title {
+.projects {
   background-color: pink;
   align: center;
   border: 5px;
   column-span: all;
   text-align: center;
+}
+
+.volunteers {
+  background-color: #d8ade6;
+  align: center;
+  border: 5px;
+  column-span: all;
+  text-align: center;
+
 }
 
 .button {

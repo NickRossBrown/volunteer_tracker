@@ -24,6 +24,7 @@ post ('/projects') do
   addproject = Project.new({:title=>projectname, :id=>0})
   addproject.save
   @projects = Project.all
+  @volunteers = Volunteer.all
   erb(:projects)
 end
 
@@ -32,6 +33,7 @@ get ('/projects/delete') do
   project=Project.find(project_id)
   project.delete
   @projects = Project.all
+  @volunteers = Volunteer.all
   erb(:projects)
 end
 
@@ -41,6 +43,7 @@ get ('/projects/update') do
   project=Project.find(project_id)
   project.update(new_project_name )
   @projects = Project.all
+  @volunteers = Volunteer.all
   erb(:projects)
 end
 
