@@ -40,6 +40,15 @@ class Volunteer
     Volunteer.new({:name => name, :id => id})
    end
 
+   def delete
+     DB.exec("DELETE FROM volunteers WHERE id='#{@id}';")
+   end
+
+   def update (new_name)
+     @id = id
+     DB.exec("UPDATE volunteers SET name = '#{new_name}' WHERE id='#{@id}';")
+   end
+
   #  def project_id
   #   #  binding.pry
   #    result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")

@@ -58,7 +58,6 @@ end
 
 get ('/volunteers/delete') do
   volunteer_id = params.fetch("volunteer_delete")
-  binding.pry
   volunteer=Volunteer.find(volunteer_id)
   volunteer.delete
   @volunteers = Volunteer.all
@@ -66,7 +65,7 @@ get ('/volunteers/delete') do
 end
 
 get ('/volunteers/update') do
-  volunteer_id = params.fetch("volunteers_update")
+  volunteer_id = params.fetch("volunteer_update")
   new_volunteer_name = params.fetch("renamevolunteer")
   volunteer=Volunteer.find(volunteer_id)
   volunteer.update(new_volunteer_name )
