@@ -1,37 +1,34 @@
 <div class="container">
 
-  <div class="table">
+  <div>
     <h1>Volunteer Webpage</h1>
     <br>
     <br>
+
     <%if @volunteers != []%>
     <table class="table">
       <tr>
-        <td class='title'>
-          <font> <strong> volunteers </strong></font>
-        </td>
+        <td class='title'><strong> Volunteers </strong></td>
+        <td class='title'><strong> Assigned To A Project?</strong></td>
       </tr>
       <% @volunteers.each do |volunteer| %>
-
       <tr>
-        <td>
-          <font><%= volunteer.name %> --- <%= volunteer.project_id%>  </font>
+        <td><%= volunteer.name %></td>
+        <%if volunteer.project_id != 0%>
+        <td class="volunteers">Yes</td>
+        <% else %>
+        <td class="no">No</td>
+        <% end %>
           <% end %>
           <% else %>
-           <h2>no volunteers yet</h2>
+          <p>No volunteers entered yet</p>
           <% end %>
-        </td>
-        <td>PROJECT ID
-        </td>
       </tr>
-
     </table>
-
 
   </div>
   <br>
   <br>
-
   <form class="container form-group button" action="/volunteers" method="post" name="volunteer">
     <label id="volunteername" name="volunteername" type = "text">Enter volunteer</label>
     <input type="text" name="volunteername">
@@ -39,7 +36,6 @@
   </form>
   <br>
   <br>
-
   <form class="container form-group button" action="/volunteers/update" method="update" name="volunteer">
     <select id="volunteer_update" name="volunteer_update">
      <%if @volunteers != []%>
@@ -50,10 +46,8 @@
        <option value="" disabled selected>no volunteer yet</option>
        <% end %>
      </select>
-
      <label id="renamevolunteer" name="renamevolunteer" type = "text">Rename volunteer Title</label>
      <input type="text" name="renamevolunteer">
-
     <button type="submit" class="btn btn-info"name="button">Update A volunteer</button>
   </form>
   <br>
@@ -74,7 +68,7 @@
   <br>
   <br>
 
-  <form class="container form-group button" action="/volunteers/projectassign" method="get" name="volunteer_assign">
+  <form class="container" action="/volunteers/projectassign" method="get" name="volunteer_assign">
     <h2>assign volunteer</h2>
 
     <select id="volunteer_assign" name="volunteer_assign">
@@ -87,7 +81,7 @@
        <% end %>
      </select>
 
-     <h2>to the project</h2>
+     <h2>To The Project</h2>
 
      <select id="project_assign" name="project_assign">
       <%if @projects != []%>

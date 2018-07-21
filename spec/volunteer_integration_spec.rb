@@ -74,7 +74,6 @@ describe 'the volunteer update feature', {:type => :feature} do
   end
 end
 
-
 describe 'the volunteer delete feature', {:type => :feature} do
   it 'allows a user to delete a volunteer' do
     test_volunteer = Volunteer.new({:title => 'franz ferdinand', :id => nil})
@@ -85,20 +84,16 @@ describe 'the volunteer delete feature', {:type => :feature} do
     expect(page).not_to have_content("franz ferdinand")
   end
 end
-#
-# # The user should be able to click on a project detail page and see a list of all volunteers working on that project. The user should be able to click on a volunteer to see the volunteer's detail page.
-#
-# describe 'the volunteer detail page path', {:type => :feature} do
-#   it 'shows a volunteer detail page' do
-#     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
-#     test_project.save
-#     project_id = test_project.id.to_i
-#     test_volunteer = Volunteer.new({:name => 'Jasmine', :project_id => project_id, :id => nil})
-#     test_volunteer.save
-#     visit "/projects/#{project_id}"
-#     click_link('Jasmine')
-#     fill_in('name', :with => 'Jane')
-#     click_button('Update Volunteer')
-#     expect(page).to have_content('Jane')
-#   end
-# end
+describe 'the assign a volunteer to a project feature', {:type => :feature} do
+  it 'assings project_id to a volunteer' do
+    test_volunteer = Volunteer.new({:name => 'franz ferdinand', :id => nil})
+    test_volunteer.save
+    test_project = Project.new({:title => 'Teaching Kids to Code', :id => 3})
+    test_project.save
+    visit "/volunteers"
+    select('franz ferdinand', :from => "volunteer_assign")
+    select('Teaching Kids to Code', :from => "project_assign")
+    click_button('Add volunteer to Project')
+    expect(page).not_to have_content("Yes")
+  end
+end
