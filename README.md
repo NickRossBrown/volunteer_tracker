@@ -4,11 +4,13 @@
 ###### By Nick Brown
 
 <hr />
+
 ## Description
 
  A web application that tracks both projects and their volunteers. New projects can be added, updated or deleted. Volunteers have the almost all same features as projects, (volunteers can be added, updated, deleted) with the option to assign a volunteer to a project. All the volunteers options are on the volunteer page and all the project options are on the projects webpage.
 
 <hr />
+
 ## Design
 
 Each volunteer will belong to only one project (one to many).
@@ -52,6 +54,7 @@ Each volunteer will belong to only one project (one to many).
   - _Example Output: _Spring cleaning volunteers-Mariah, clean out gutters
 
 <hr />
+
 ## Setup/Contribution Requirements
 
 1. Clone the repo
@@ -75,11 +78,13 @@ localhost:<port number>      ---example--- localhost:4567
 ```
 
 <hr />
+
 ## Technologies Used
 
 * Ruby 2.4.1
 
 <hr />
+
 ### License
 
 *{This software is licensed under the MIT license}*
