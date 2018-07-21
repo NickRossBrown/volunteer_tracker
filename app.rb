@@ -54,9 +54,9 @@ get('/volunteers') do
 end
 
 post ('/volunteers') do
-  projectname = params.fetch("projectname")
-  addproject = Volunteer.new({:name=>projectname})
-  addproject.save
+  volunteername = params.fetch("volunteername")
+  addvolunteer = Volunteer.new({:name=>volunteername})
+  addvolunteer.save
   @projects = Project.all
   @volunteers = Volunteer.all
   erb(:volunteers)

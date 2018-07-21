@@ -14,8 +14,8 @@ describe 'the project creation path', {:type => :feature} do
   end
 end
 
-describe 'the project creation path', {:type => :feature} do
-  it 'takes the user to the profile page where they can create a project' do
+describe 'the project creation feature', {:type => :feature} do
+  it 'create a project on the the profile page' do
     visit '/projects'
     fill_in('projectname', :with => 'Teaching Kids to Code')
     click_button('Add A Project')
@@ -23,8 +23,8 @@ describe 'the project creation path', {:type => :feature} do
   end
 end
 
-describe 'the project update path', {:type => :feature} do
-  it 'allows a user to change the name of the project' do
+describe 'the project update feature', {:type => :feature} do
+  it 'allows a user to change the name of the project on the the profile page' do
     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
     test_project.save
     visit '/projects'
@@ -35,8 +35,8 @@ describe 'the project update path', {:type => :feature} do
 end
 
 
-describe 'the project delete path', {:type => :feature} do
-  it 'allows a user to delete a project' do
+describe 'the project delete feature', {:type => :feature} do
+  it 'allows a user to delete a project on the the profile page' do
     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
     test_project.save
     project_id = test_project.id
@@ -46,42 +46,42 @@ describe 'the project delete path', {:type => :feature} do
   end
 end
 
-describe 'the volunteer creation path', {:type => :feature} do
+describe 'the volunteer creation feature', {:type => :feature} do
   it 'takes the user from the homepage to the volunteer page' do
     visit '/'
-    click_link('Click Here to View Volunteer')
-    expect(page).to have_content('Volunteer Wepage')
+    click_link('Click here to view volunteers')
+    expect(page).to have_content('Volunteer Webpage')
   end
 end
 
-describe 'the volunteer creation path', {:type => :feature} do
+describe 'the volunteer creation feature', {:type => :feature} do
   it 'takes the user to the profile page where they can create a volunteer' do
     visit '/volunteers'
     fill_in('volunteername', :with => 'franz ferdinand')
-    click_button('Add A Volunteer')
+    click_button('Add A volunteer')
     expect(page).to have_content('franz ferdinand')
   end
 end
 
-describe 'the volunteer update path', {:type => :feature} do
+describe 'the volunteer update feature', {:type => :feature} do
   it 'allows a user to change the name of the volunteer' do
     test_volunteer = Volunteer.new({:title => 'franz ferdinand', :id => nil})
     test_volunteer.save
     visit '/volunteers'
     fill_in('renamevolunteer', :with => 'France Ferdin')
-    click_button('Update A Volunteer')
+    click_button('Update A volunteer')
     expect(page).to have_content('France Ferdin')
   end
 end
 
 
-describe 'the volunteer delete path', {:type => :feature} do
+describe 'the volunteer delete feature', {:type => :feature} do
   it 'allows a user to delete a volunteer' do
     test_volunteer = Volunteer.new({:title => 'franz ferdinand', :id => nil})
     test_volunteer.save
     volunteer_id = test_volunteer.id
     visit "/volunteers"
-    click_button('Delete A Volunteer')
+    click_button('Delete A volunteer')
     expect(page).not_to have_content("franz ferdinand")
   end
 end
