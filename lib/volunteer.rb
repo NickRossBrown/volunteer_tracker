@@ -55,26 +55,4 @@ class Volunteer
      DB.exec("UPDATE volunteers SET project_id = '#{@project_id }' WHERE id='#{@id}';")
    end
 
-  #  def project_id
-  #   #  binding.pry
-  #    result = DB.exec("SELECT * FROM volunteer WHERE id = #{id};")
-  #   #  title = result.first().fetch("title")
-  #   #  project_id = result.fetch("project_id")
-  #    binding.pry
-  #    Project.new({:title => title, :id => id})
-  #  end
-
-   def search_project (project_id)
-    all_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id};")
-    volunteers=[]
-
-    all_volunteers.each() do |person|
-      name = person.fetch("name")
-      id = person.fetch("id").to_i
-      project_id = person.fetch("project_id").to_i
-      volunteers.push(Volunteer.new({:name=> name, :id=> id, :project_id=>project_id}))
-    end
-    volunteers
-  end
-
 end

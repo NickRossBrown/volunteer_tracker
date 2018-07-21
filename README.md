@@ -6,20 +6,28 @@
 <hr />
 ## Description
 
- A web application that tracks both projects and their volunteers. New projects can be added, updated or deleted. Volunteers have the almost same features as projects; they can be added, updated, deleted AND assigned to a project.
+ A web application that tracks both projects and their volunteers. New projects can be added, updated or deleted. Volunteers have the almost all same features as projects, (volunteers can be added, updated, deleted) with the option to assign a volunteer to a project. All the volunteers options are on the volunteer page and all the project options are on the projects webpage.
 
 <hr />
 ## Design
 
 Each volunteer will belong to only one project (one to many).
 
-Web Homepage
+---------------------------Schema--------------------------
 
-<img height="300" src="public/homepage.png">
+<img height="200" src="public/design/schema.png">
 
-Web Projectpage
+-------------------------------Web Homepage-------------------------------
 
-<img  height="400" src="public/projects-page.png">
+<img height="300" src="public/design/homepage.png">
+
+--------------------------Projects page--------------------------
+
+<img  height="400" src="public/design/projects.png">
+
+------------------------Volunteer page------------------------
+
+<img  height="400" src="public/design/volunteers.png">
 
 <hr />
 

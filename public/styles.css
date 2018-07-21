@@ -1,10 +1,7 @@
-
-
 .bodyStyles{
-
   background: radial-gradient(lightyellow, #dcc7cc);
-
 }
+
 .container {
   text-align: center;
   font-size: 20px;
@@ -49,8 +46,6 @@
 
 .button {
   background-color: #ade6d8;
-  margin-top: 300px;
-  margin-bottom: 50px;
 }
 
 #projectsPage {
