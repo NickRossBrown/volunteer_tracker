@@ -7,7 +7,7 @@ describe Project do
       expect(project.title).to(eq( 'Teaching Kids to Code'))
     end
   end
-  #
+
   context '#id' do
     it 'returns the id of the project before saving project' do
       project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
@@ -29,7 +29,7 @@ describe Project do
       expect(project1 == project2).to(eq( true))
     end
   end
-  #
+
   context '.all' do
     it 'is empty to start' do
       expect(Project.all).to(eq( []))
@@ -62,26 +62,12 @@ describe Project do
     end
   end
 
-  # describe '#volunteers' do
-  #   it 'returns all volunteers for a specific project' do
-  #     project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
-  #     project.save
-  #     volunteer1 = Volunteer.new({:name => 'Jasmine', :project_id => project.id, :id => nil})
-  #     volunteer1.save
-  #     volunteer2 = Volunteer.new({:name => 'Joe', :project_id => project.id, :id => nil})
-  #     volunteer2.save
-  #     expect(project.volunteers).to(eq( [volunteer1, volunteer2]))
-  #   end
-  # end
 
   describe '#update' do
     it 'allows a user to update a project' do
       project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
       project.save
       project.update('Teaching Ruby to Kids')
-      # teacher's written code below
-      # project.update({:title => 'Teaching Ruby to Kids', :id => nil})
-      # binding.pry
       expect(project.title).to(eq( 'Teaching Ruby to Kids'))
     end
   end

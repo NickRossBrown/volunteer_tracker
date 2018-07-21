@@ -1,24 +1,24 @@
 <div class="container">
 
-  <div >
-    <h1>Projects Wepage</h1>
-    <br>
+  <div class="table">
+    <h1>Projects Webpage</h1>
     <br>
     <%if @projects != []%>
     <table class="table">
       <tr>
         <td class='projects'><strong> Projects </strong></td>
-        <td class="volunteers"><strong> Volunteers </strong></td>
+        <td class="volunteers"><strong> Volunteers</strong></td>
       </tr>
       <% @projects.each do |project| %>
       <tr>
         <td class='projects'><%= project.title %></td>
+        <td class="volunteers">
           <%@volunteers.each do |volunteer| %>
             <%if volunteer.project_id == project.id %>
-            <td class="volunteers"><%= volunteer.name %></td>
+            <%= volunteer.name %>
             <% end %>
           <% end %>
-
+        </td>
       </tr>
       <% end %>
     </table>
@@ -27,14 +27,11 @@
     <% end %>
   </div>
   <br>
-  <br>
-
   <form class="container form-group button" action="/projects" method="post" name="projects">
     <label for="projectname">Enter project</label>
     <input type="text" name="projectname" id="projectname">
     <button  type="submit" class="btn btn-info">Add A Project </button>
   </form>
-  <br>
   <br>
 
   <form class="container form-group button" action="/projects/update" method="update" name="projects">
@@ -54,7 +51,6 @@
     <button type="submit" class="btn btn-info"name="button">Update A Project</button>
   </form>
   <br>
-  <br>
 
   <form class="container form-group button" action="/projects/delete" method="delete" name="projects">
     <select id="project_delete" name="project_delete">
@@ -68,7 +64,6 @@
      </select>
     <button  type="submit" class="btn btn-info"name="button">Delete A Project</button>
   </form>
-  <br>
   <br>
 
   <button class="container" id="homepage" type="button" name="button">

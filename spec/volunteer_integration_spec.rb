@@ -10,7 +10,7 @@ describe 'the project creation path', {:type => :feature} do
   it 'takes the user from the homepage to the project page' do
     visit '/'
     click_link('Click Here to View Projects')
-    expect(page).to have_content('Projects Wepage')
+    expect(page).to have_content('Projects Webpage')
   end
 end
 
@@ -49,7 +49,7 @@ end
 describe 'the volunteer creation feature', {:type => :feature} do
   it 'takes the user from the homepage to the volunteer page' do
     visit '/'
-    click_link('Click here to view volunteers')
+    click_link('Click here to view Volunteers')
     expect(page).to have_content('Volunteer Webpage')
   end
 end

@@ -36,7 +36,7 @@ describe Volunteer do
       expect(Volunteer.all).to(eq( [volunteer1, volunteer2]))
     end
   end
-#
+
   describe '#save' do
     it 'adds a volunteer to the database' do
       volunteer1 = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
@@ -44,7 +44,7 @@ describe Volunteer do
       expect(Volunteer.all).to(eq( [volunteer1]))
     end
   end
-#
+
   describe '.find' do
     it 'returns a volunteer by id' do
       volunteer1 = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
@@ -58,4 +58,15 @@ describe Volunteer do
       expect(volunteer2.search_project(1)).to(eq( [volunteer1, volunteer2]))
     end
   end
+
+  describe 'update_project_id ' do
+    it 'assigns volunteers to a specific project' do
+      project = Project.new({:title => 'Teaching Kids to Code', :id => 2})
+      volunteer1 = Volunteer.new({:name => 'Jasmine'})
+      volunteer1.update_project_id(2)
+      volunteer1.save
+      expect(project.id).to(eq(volunteer1.project_id))
+    end
+  end
+
 end

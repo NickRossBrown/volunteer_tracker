@@ -1,10 +1,7 @@
 <div class="container">
-
   <div>
     <h1>Volunteer Webpage</h1>
     <br>
-    <br>
-
     <%if @volunteers != []%>
     <table class="table">
       <tr>
@@ -17,7 +14,7 @@
         <%if volunteer.project_id != 0%>
         <td class="volunteers">Yes</td>
         <% else %>
-        <td class="no">No</td>
+        <td class="projects">No</td>
         <% end %>
           <% end %>
           <% else %>
@@ -25,17 +22,16 @@
           <% end %>
       </tr>
     </table>
-
   </div>
   <br>
-  <br>
+
   <form class="container form-group button" action="/volunteers" method="post" name="volunteer">
     <label id="volunteername" name="volunteername" type = "text">Enter volunteer</label>
     <input type="text" name="volunteername">
     <button  type="submit" class="btn btn-info"name="button">Add A volunteer </button>
   </form>
   <br>
-  <br>
+
   <form class="container form-group button" action="/volunteers/update" method="update" name="volunteer">
     <select id="volunteer_update" name="volunteer_update">
      <%if @volunteers != []%>
@@ -51,7 +47,6 @@
     <button type="submit" class="btn btn-info"name="button">Update A volunteer</button>
   </form>
   <br>
-  <br>
 
   <form class="container form-group button" action="/volunteers/delete" method="delete" name="volunteer">
     <select id="volunteer_delete" name="volunteer_delete">
@@ -66,9 +61,8 @@
     <button  type="submit" class="btn btn-info"name="button">Delete A volunteer</button>
   </form>
   <br>
-  <br>
 
-  <form class="container" action="/volunteers/projectassign" method="get" name="volunteer_assign">
+  <form class="container projects" action="/volunteers/projectassign" method="get" name="volunteer_assign">
     <h2>assign volunteer</h2>
 
     <select id="volunteer_assign" name="volunteer_assign">
@@ -86,7 +80,7 @@
      <select id="project_assign" name="project_assign">
       <%if @projects != []%>
        <% @projects.each do |project| %>
-        <option value = "<%= project.id %>" > <%= project.title %> </option>
+        <option value ="<%= project.id %>" > <%= project.title %> </option>
         <% end %>
         <% else %>
         <option value="" disabled selected>no projects yet</option>
@@ -97,7 +91,6 @@
     <button  type="submit" class="btn btn-info"name="button">Add volunteer to Project</button>
   </form>
 
-  <br>
   <br>
 
   <button class="container" id="homepage" type="button" name="button">
